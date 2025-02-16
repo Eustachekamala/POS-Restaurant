@@ -6,7 +6,7 @@ function Header(){
             {/**LOGO */}
             <div className="flex items-center gap-2">
                 <img src="logo.png" className="h-8 w-8 white-logo" alt="Logo" />
-                <h1 className="text-lg font-semibold text-[#f5f5f5]">Resto</h1>
+                <h1 className="text-lg font-semibold text-[#f5f5f5]">Pos-Resto</h1>
             </div>
             {/**SEARCH */}
             <div className="flex items-center gap-4 bg-[#1f1f1f] px-5 rounded-[20px] py-2 w-[500px]">
