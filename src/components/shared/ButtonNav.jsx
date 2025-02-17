@@ -3,13 +3,32 @@ import { MdOutlineReorder, MdTableBar } from "react-icons/md";
 import { CiCircleMore } from "react-icons/ci";
 import { BiSolidDish } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import Modal from "./Modal";
 
 function ButtonNav() {
-
   const navigate = useNavigate();
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [guestCount, setGuestCount] = useState(0);
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    setIsButtonActive(true); // Change button background color when modal opens
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsButtonActive(false); // Reset button background color when modal closes
+  };
+
+  const handleCreateOrder = () => {
+    navigate("/tables");
+    closeModal();
+  };
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-[#262626] p-2 flex gap-3 h-16 justify-around">
@@ -50,11 +69,61 @@ function ButtonNav() {
         <p>More</p>
       </button>
       <button
-        onClick={() => navigate("/")}
-        className="absolute bottom-6 bg-[#F6B100] rounded-full p-3 text-[#f5f5f5] items-center"
+        onClick={openModal}
+        className={`absolute bottom-6 ${
+          isButtonActive ? "bg-blue-500" : "bg-[#F6B100]"
+        } rounded-full p-4 text-[#f5f5f5] h-16 w-16 flex items-center justify-center`}
       >
-        <BiSolidDish size={24} />
+        <BiSolidDish size={30} />
       </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Create Order">
+        <div className="flex flex-col gap-6">
+          <div>
+            <label className="block text-[#ababab] mb-2 text-sm font-medium">Customer Name</label>
+            <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
+              <input
+                type="text"
+                placeholder="Enter customer name"
+                className="bg-transparent placeholder:opacity-75 flex-1 text-white focus:outline-none"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-[#ababab] mb-2 text-sm font-medium">Customer Phone</label>
+            <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
+              <input
+                type="number"
+                placeholder="(+254)-7000100911"
+                className="bg-transparent placeholder:opacity-75 flex-1 text-white focus:outline-none"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-[#ababab] mb-2 text-sm font-medium">Guests</label>
+            <div className="flex items-center justify-between rounded-lg p-3 px-4 bg-[#1f1f1f]">
+              <button
+                onClick={() => setGuestCount((prevCount) => Math.max(prevCount - 1, 0))}
+                className="text-yellow-500 text-2xl"
+              >
+                &minus;
+              </button>
+              <span className="text-white">{guestCount}</span>
+              <button
+                onClick={() => setGuestCount(guestCount + 1)}
+                className="text-yellow-500 text-2xl"
+              >
+                &#43;
+              </button>
+            </div>
+          </div>
+          <button
+            onClick={handleCreateOrder}
+            className="w-full bg-[#F6B100] text-[#f5f5f5] rounded-lg py-3 mt-3 hover:bg-yellow-700"
+          >
+            Create Order
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

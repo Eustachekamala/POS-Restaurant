@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
-const TableCard = ({name, seats, initials, status, color}) => {
+const TableCard = ({name, seats, initials, status, color, key}) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if(status === "Booked") return;
+    navigate(`/menu`);
+  }
+
   return (
-    <div className="w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f]">
+    <div onClick={handleClick} key={key} className="w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f]">
         <div className="flex items-center justify-between px-1">
             <h1 className="text-[#f5f5f5] text-xl font-semibold">{name}</h1>
             <p className={`${status === "Booked" ? "text-green-600 bg-[#3d7e679f]" : "text-white bg-[#8e6b14be]"} px-2 py-1 rounded-lg`}>{status}</p>
@@ -20,7 +28,8 @@ TableCard.propTypes = {
     seats : PropTypes.number,
     initials : PropTypes.string,
      status: PropTypes.string,
-    color: PropTypes.string 
+    color: PropTypes.string,
+    key: PropTypes.number
 }
 
 export default TableCard
