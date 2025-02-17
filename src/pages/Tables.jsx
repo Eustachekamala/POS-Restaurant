@@ -7,7 +7,7 @@ import { tables } from "../constants";
 function Tables(){
     const [status, setStatus] = useState("all")
     return(
-        <section className="bg-[#1f1f1f] h-[calc(100vh-4rem)] overflow-hidden">
+        <section className="bg-[#1f1f1f] h-[calc(100vh-5rem)] overflow-hidden">
             <dir className="flex items-center justify-between px-10 py-4 mt-2">
                 <div className="flex items-center gap-4">
                     <BackButton/>

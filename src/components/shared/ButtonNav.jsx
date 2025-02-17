@@ -17,12 +17,12 @@ function ButtonNav() {
 
   const openModal = () => {
     setIsModalOpen(true);
-    setIsButtonActive(true); // Change button background color when modal opens
+    setIsButtonActive(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setIsButtonActive(false); // Reset button background color when modal closes
+    setIsButtonActive(false); 
   };
 
   const handleCreateOrder = () => {
