@@ -5,16 +5,21 @@ import { BiSolidDish } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Modal from "./Modal";
+import { useDispatch } from "react-redux";
+import { setCustomer } from '../../redux/slices/customerSlice.js'
 
 function ButtonNav() {
   const navigate = useNavigate();
   const location = useLocation();
+  const disptch = useDispatch();
 
   const isActive = (path) => location.pathname === path;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [guestCount, setGuestCount] = useState(0);
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [name, setName] = useState();
+  const [phone, setPhone] = useState();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -27,6 +32,8 @@ function ButtonNav() {
   };
 
   const handleCreateOrder = () => {
+      //send data to the store
+    disptch(setCustomer({name, phone, guests: guestCount}))
     navigate("/tables");
     closeModal();
   };
@@ -84,6 +91,8 @@ function ButtonNav() {
             <label className="block text-[#ababab] mb-2 text-sm font-medium">Customer Name</label>
             <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
               <input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
                 type="text"
                 placeholder="Enter customer name"
                 className="bg-transparent placeholder:opacity-75 flex-1 text-white focus:outline-none"
@@ -94,6 +103,8 @@ function ButtonNav() {
             <label className="block text-[#ababab] mb-2 text-sm font-medium">Customer Phone</label>
             <div className="flex items-center rounded-lg p-3 px-4 bg-[#1f1f1f]">
               <input
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
                 type="number"
                 placeholder="(+254)-7000100911"
                 className="bg-transparent placeholder:opacity-75 flex-1 text-white focus:outline-none"

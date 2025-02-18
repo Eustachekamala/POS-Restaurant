@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { getBgColor } from '../../utils';
+import { useDispatch } from 'react-redux';
+import { updateTable } from '../../redux/slices/customerSlice';
 
 const TableCard = ({name, seats, initials, status, key}) => {
   const navigate = useNavigate();
+  const disptch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = (name) => {
     if(status === "Booked") return;
+    disptch(updateTable({tableNo : name}))
     navigate(`/menu`);
   }
 
   return (
-    <div onClick={handleClick} key={key} className="w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f]">
+    <div onClick={() => handleClick(name)} key={key} className="w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f]">
         <div className="flex items-center justify-between px-1">
             <h1 className="text-[#f5f5f5] text-xl font-semibold">{name}</h1>
             <p className={`${status === "Booked" ? "text-green-600 bg-[#3d7e679f]" : "text-white bg-[#8e6b14be]"} px-2 py-1 rounded-lg`}>{status}</p>
