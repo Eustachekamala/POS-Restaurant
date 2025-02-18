@@ -16,14 +16,25 @@ function Greetings(){
         :${String(date.getSeconds()).padStart(2, '0')}`;
 
     return(
-        <div className="flex justify-between items-center px-8 mt-5">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 md:px-8 lg:px-10 mt-5 gap-4 sm:gap-0">
+            {/** Left Section */}
             <div>
-                <h1 className="text-[#f5f5f5] text-2xl font-semibold">Good Morning, {customerData.customerName}</h1>
-                <p className="text-[#ababab] text-sm">Give your best services for customers </p>
+                <h1 className="text-[#f5f5f5] text-xl sm:text-2xl font-semibold">
+                Good Morning, {customerData.customerName}
+                </h1>
+                <p className="text-[#ababab] text-xs sm:text-sm">
+                Give your best services for customers
+                </p>
             </div>
-            <div className="">
-                <h1 className="text-[#f5f5f5] text-3xl font-bold tracking-wide">{formatTime(dateTime)}</h1>
-                <p className="text-[#ababab] text-sm">{formatDate(dateTime)}</p>
+
+            {/** Right Section */}
+            <div className="text-right">
+                <h1 className="text-[#f5f5f5] text-2xl sm:text-3xl font-bold tracking-wide">
+                {formatTime(dateTime)}
+                </h1>
+                <p className="text-[#ababab] text-xs sm:text-sm">
+                {formatDate(dateTime)}
+                </p>
             </div>
         </div>
     )

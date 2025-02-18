@@ -39,52 +39,63 @@ function ButtonNav() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#262626] p-2 flex gap-3 h-16 justify-around">
+    <div className="fixed bottom-0 left-0 right-0 bg-[#262626] p-2 flex gap-3 h-16 justify-around items-center">
+      {/** Home Button */}
       <button
         onClick={() => navigate("/")}
         className={`flex items-center justify-center text-[#ababab] ${
           isActive("/") ? "bg-[#F6B100] text-[#f5f5f5]" : "bg-[#343434]"
-        } w-[200px] rounded-[20px]`}
+        } w-12 p-3 sm:w-[200px] rounded-[20px]`}
       >
-        <FaHome className="inline mr-3" size={24} />
-        <p>Home</p>
+        <FaHome className="inline sm:mr-3" size={24} />
+        <p className="hidden sm:block">Home</p>
       </button>
+
+      {/** Orders Button */}
       <button
         onClick={() => navigate("/orders")}
         className={`flex items-center justify-center text-[#ababab] ${
           isActive("/orders") ? "bg-[#F6B100] text-[#f5f5f5]" : "bg-[#343434]"
-        } w-[200px] rounded-[20px]`}
+        } w-12 p-3 sm:w-[200px] rounded-[20px]`}
       >
-        <MdOutlineReorder className="inline mr-3" size={24} />
-        <p>Orders</p>
+        <MdOutlineReorder className="inline sm:mr-3" size={24} />
+        <p className="hidden sm:block">Orders</p>
       </button>
+
+      {/** Tables Button */}
       <button
         onClick={() => navigate("/tables")}
         className={`flex items-center justify-center text-[#ababab] ${
           isActive("/tables") ? "bg-[#F6B100] text-[#f5f5f5]" : "bg-[#343434]"
-        } w-[200px] rounded-[20px]`}
+        } w-12 p-3 sm:w-[200px] rounded-[20px]`}
       >
-        <MdTableBar className="inline mr-3" size={24} />
-        <p>Tables</p>
+        <MdTableBar className="inline sm:mr-3" size={24} />
+        <p className="hidden sm:block">Tables</p>
       </button>
+
+      {/** More Button */}
       <button
         onClick={() => navigate("/more")}
         className={`flex items-center justify-center text-[#ababab] ${
           isActive("/more") ? "bg-[#F6B100] text-[#f5f5f5]" : "bg-[#343434]"
-        } w-[200px] rounded-[20px]`}
+        } w-12 p-3 sm:w-[200px] rounded-[20px]`}
       >
-        <CiCircleMore className="inline mr-3" size={24} />
-        <p>More</p>
+        <CiCircleMore className="inline sm:mr-3" size={24} />
+        <p className="hidden sm:block">More</p>
       </button>
+
+      {/** Floating Action Button */}
       <button
         disabled={isActive("/tables") || isActive("/menu")}
         onClick={openModal}
-        className={`absolute bottom-6 ${
+        className={`flex items-center justify-center ${
           isButtonActive ? "bg-blue-500" : "bg-[#F6B100]"
-        } rounded-full p-4 text-[#f5f5f5] h-16 w-16 flex items-center justify-center`}
+        } rounded-full p-4 text-[#f5f5f5] h-12 w-12 sm:h-16 sm:w-16 sm:absolute sm:bottom-6 sm:left-1/2 sm:transform sm:-translate-x-1/2`}
       >
-        <BiSolidDish size={30} />
+        <BiSolidDish size={24} className="sm:size-30" />
       </button>
+
+      {/** Modal */}
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Create Order">
         <div className="flex flex-col gap-6">
           <div>

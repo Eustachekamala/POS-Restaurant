@@ -11,10 +11,10 @@ const Menu = () => {
   const customerData = useSelector(state => state.customer);
 
   return (
-   <section className="bg-[#1f1f1f] h-[calc(100vh-5rem)] overflow-hidden flex flex-col md:flex-row gap-3">
+   <section className="bg-[#1f1f1f] md:h-[calc(100vh-5rem)] overflow-hidden flex flex-col md:flex-row gap-3">
     {/** Left Div */}
     <div className="flex-[3]">
-        <div className="flex items-center justify-between px-10 py-4 mt-2">
+        <div className="flex sm:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-4 mt-2 gap-4 sm:gap-0">
             <div className="flex items-center gap-4">
                 <BackButton />
                 <h1 className="text-[#f5f5f5] font-bold text-2xl">Menu</h1>
