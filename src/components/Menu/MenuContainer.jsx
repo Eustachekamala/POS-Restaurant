@@ -1,6 +1,7 @@
 import { GrRadialSelected } from "react-icons/gr"
 import { menus } from "../../constants"
 import { useState } from "react"
+import { FaShoppingCart } from "react-icons/fa"
 
 
 const MenuContainer = () => {
@@ -26,7 +27,11 @@ const MenuContainer = () => {
             {
                 menus.map((menu) => {
                     return (
-                        <div key={menu.id} onClick={() => setSelected(menu)} style={{backgroundColor : menu.bgColor}} className="flex flex-col items-start justify-between p-4 rounded-lg h-[100px] cursor-pointer">
+                        <div key={menu.id} onClick={() => {
+                            setSelected(menu);
+                            setItemId(0);
+                            setItemCount(0);
+                        }} style={{backgroundColor : menu.bgColor}} className="flex flex-col items-start justify-between p-4 rounded-lg h-[100px] cursor-pointer">
                             <div className="flex items-center justify-between w-full">
                                 <h1 className="text-[#f5f5f5] font-semibold text-lg">{menu.icon} {menu.name}</h1>
                                 { selected.id === menu.id && <GrRadialSelected className="text-white" size={20}/>}
@@ -47,10 +52,11 @@ const MenuContainer = () => {
                             items-start justify-between bg-[#1a1a1a] p-4 rounded-lg h-[150px] cursor-pointer hover:bg-gray-500">
                             <div className="flex items-center justify-between w-full">
                                 <h1 className="text-[#f5f5f5] font-semibold text-lg">{menu.name}</h1>
+                                <button className="bg-[#2e4a40] text-[#02ca3a] p-2 rounded-lg cursor-pointer"><FaShoppingCart size={20}/></button>
                             </div>
                             <div className="flex items-center justify-between w-full">
                                 <p className="text-[#ababab] text-xl font-bold">KES {menu.price} </p>
-                                <div className="flex items-center justify-between gap-6 rounded-lg z-20 p-3 px-4 bg-[#1f1f1f]">
+                                <div className="flex items-center justify-between gap-6 rounded-lg p-3 px-4 bg-[#1f1f1f]">
                                 <button
                                     onClick={() => decrement(menu.id)}
                                     className="text-yellow-500 text-2xl"

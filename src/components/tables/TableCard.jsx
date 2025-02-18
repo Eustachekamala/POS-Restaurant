@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { getBgColor } from '../../utils';
 
-const TableCard = ({name, seats, initials, status, color, key}) => {
+const TableCard = ({name, seats, initials, status, key}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,9 +17,9 @@ const TableCard = ({name, seats, initials, status, color, key}) => {
             <p className={`${status === "Booked" ? "text-green-600 bg-[#3d7e679f]" : "text-white bg-[#8e6b14be]"} px-2 py-1 rounded-lg`}>{status}</p>
         </div>
         <div className="flex items-center justify-center mt-5 mb-7">
-            <h1 className="text-white text-xl rounded-full h-16 w-16 flex items-center justify-center" style={{backgroundColor : color}}>{initials}</h1>
+            <h1 className="text-white text-xl rounded-full h-16 w-16 flex items-center justify-center" style={{backgroundColor : getBgColor()}}>{initials}</h1>
         </div>
-        <p className='text-[#abab] text-sm font-semibold'>{seats}<span> Seats</span></p>
+        <p className='text-[#abab] text-sm font-semibold'>Seats: <span className='text-[#f5f5f5]'>{seats}</span></p>
     </div>
   )
 }

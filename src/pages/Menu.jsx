@@ -2,6 +2,9 @@ import BackButton from "../components/shared/BackButton"
 import ButtonNav from "../components/shared/ButtonNav"
 import { MdRestaurantMenu } from "react-icons/md"
 import MenuContainer from "../components/Menu/MenuContainer"
+import CustomerInfo from "../components/Menu/CustomerInfo"
+import CartItems from "../components/Menu/CartItems"
+import BillInfo from "../components/Menu/BillInfo"
 
 const Menu = () => {
   return (
@@ -26,8 +29,15 @@ const Menu = () => {
             <MenuContainer/>
             </div>
             {/**Right Div */}
-            <div className="flex-[1]">
-
+            <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-3 h-[780px] rounded-lg pt-2">
+              {/**Customer Info */}
+                <CustomerInfo/>
+                <hr className="border-[#2a2a2a] border-t-2" />
+              {/**Cart Items */}
+                <CartItems/>
+                <hr className="border-[#2a2a2a] border-t-2" />
+              {/**Bills */}
+              <BillInfo/>
             </div>
     
       <ButtonNav/> 

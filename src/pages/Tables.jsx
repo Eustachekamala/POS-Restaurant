@@ -23,7 +23,7 @@ function Tables(){
                     tables.map((table) =>{
                         return(
                             <TableCard key={table.id} id={table.id} name={table.name} 
-                            status={table.status} initials={table.initial} seats={table.seats} color={table.color}/>
+                            status={table.status} initials={table.initial} seats={table.seats}/>
                         )
                     })
                 }

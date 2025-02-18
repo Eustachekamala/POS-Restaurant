@@ -11,6 +11,7 @@ function ButtonNav() {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [guestCount, setGuestCount] = useState(0);
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -69,6 +70,7 @@ function ButtonNav() {
         <p>More</p>
       </button>
       <button
+        disabled={isActive("/tables") || isActive("/menu")}
         onClick={openModal}
         className={`absolute bottom-6 ${
           isButtonActive ? "bg-blue-500" : "bg-[#F6B100]"
