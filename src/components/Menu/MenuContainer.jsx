@@ -2,23 +2,38 @@ import { GrRadialSelected } from "react-icons/gr"
 import { menus } from "../../constants"
 import { useState } from "react"
 import { FaShoppingCart } from "react-icons/fa"
+import { useDispatch } from "react-redux"
+import { addItems } from "../../redux/slices/cartSlice"
 
 
 const MenuContainer = () => {
     const [selected, setSelected] = useState(menus[0]);
-    const [itemsCount, setItemCount] = useState(0);
+    const [itemCount, setItemCount] = useState(0);
     const [itemId, setItemId] = useState();
+    const dispatch = useDispatch();
 
     const increment = (id) =>{
         setItemId(id)
-        if(itemsCount >= 4) return;
+        if(itemCount >= 4) return;
         setItemCount((prev) => prev + 1);
     }
 
     const decrement = (id) =>{
         setItemId(id)
-        if(itemsCount <= 0) return;
+        if(itemCount <= 0) return;
         setItemCount((prev) => prev - 1);
+    }
+
+
+    const handleAddToCart = (item) => {
+        if(itemCount === 0) return;
+
+        const { name, price} = item;
+
+        const newObj = { id: new Date(), name, pricePerQuantity: price, quantity: itemCount, price: price * itemCount};
+
+        dispatch(addItems(newObj));
+        setItemCount(0);
     }
 
   return (
@@ -46,26 +61,26 @@ const MenuContainer = () => {
 
         <div className="grid grid-cols-4 gap-4 px-10 py-4 w-[100%]">
             {
-                selected?.items.map((menu) => {
+                selected?.items.map((item) => {
                     return (
-                        <div key={menu.id} className="flex flex-col 
+                        <div key={item.id} className="flex flex-col 
                             items-start justify-between bg-[#1a1a1a] p-4 rounded-lg h-[150px] cursor-pointer hover:bg-gray-500">
                             <div className="flex items-center justify-between w-full">
-                                <h1 className="text-[#f5f5f5] font-semibold text-lg">{menu.name}</h1>
-                                <button className="bg-[#2e4a40] text-[#02ca3a] p-2 rounded-lg cursor-pointer"><FaShoppingCart size={20}/></button>
+                                <h1 className="text-[#f5f5f5] font-semibold text-lg">{item.name}</h1>
+                                <button onClick={() => handleAddToCart(item)} className="bg-[#2e4a40] text-[#02ca3a] p-2 rounded-lg cursor-pointer"><FaShoppingCart size={20}/></button>
                             </div>
                             <div className="flex items-center justify-between w-full">
-                                <p className="text-[#ababab] text-xl font-bold">KES {menu.price} </p>
+                                <p className="text-[#ababab] text-xl font-bold">KES {item.price} </p>
                                 <div className="flex items-center justify-between gap-6 rounded-lg p-3 px-4 bg-[#1f1f1f]">
                                 <button
-                                    onClick={() => decrement(menu.id)}
+                                    onClick={() => decrement(item.id)}
                                     className="text-yellow-500 text-2xl"
                                 >
                                     &minus;
                                 </button>
-                                <span className="text-white">{menu.id === itemId ? itemsCount : "0"}</span>
+                                <span className="text-white">{item.id === itemId ? itemCount : "0"}</span>
                                 <button
-                                    onClick={() => increment(menu.id)}
+                                    onClick={() => increment(item.id)}
                                     className="text-yellow-500 text-2xl"
                                 >
                                     &#43;
