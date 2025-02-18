@@ -3,7 +3,7 @@ import OrderList from "./OrderList";
 
 function RecentOrders(){
     return (
-        <div className="px-4 sm:px-6 md:px-8 mt-6">
+        <div className="px-3 md:px-8 mt-6">
             <div className="bg-[#1a1a1a] w-full h-auto sm:h-[450px] rounded-lg">
                 {/** Header Section */}
                 <div className="flex justify-between items-center px-4 sm:px-6 py-4">

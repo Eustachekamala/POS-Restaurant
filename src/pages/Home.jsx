@@ -12,7 +12,7 @@ function Home(){
             {/**Left Div */}
             <div className="flex-[3]">
                 <Greetings/>
-                <div className="flex flex-col w-full md:flex-row items-center gap-3 px-8 mt-8">
+                <div className="flex flex-col w-full md:flex-row items-center gap-3 px-3 md:px-8 mt-8">
                     <MiniCard title="Total Earnings" icon={<BsCashCoin />} number={512} footerNum={1.6}/>
                     <MiniCard title="In Progess" icon={<GrInProgress />} number={16} footerNum={3.6}/>
                 </div>

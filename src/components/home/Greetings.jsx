@@ -16,7 +16,7 @@ function Greetings(){
         :${String(date.getSeconds()).padStart(2, '0')}`;
 
     return(
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 md:px-8 lg:px-10 mt-5 gap-4 sm:gap-0">
+        <div className="flex sm:flex-row justify-between items-center md:items-start sm:items-center px-4 sm:px-6 md:px-8 lg:px-10 mt-5 gap-4 sm:gap-0">
             {/** Left Section */}
             <div>
                 <h1 className="text-[#f5f5f5] text-xl sm:text-2xl font-semibold">
