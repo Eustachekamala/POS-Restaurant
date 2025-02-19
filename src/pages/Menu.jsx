@@ -13,7 +13,7 @@ const Menu = () => {
   return (
    <section className="bg-[#1f1f1f] md:h-[calc(100vh-5rem)] overflow-hidden flex flex-col md:flex-row gap-3 mb-[63px] md:mb-0">
     {/** Left Div */}
-    <div className="flex-[3]">
+    <div className="flex-[3] md:h-[800px]">
         <div className="flex sm:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-4 mt-2 gap-4 sm:gap-0">
             <div className="flex items-center gap-4">
                 <BackButton />
@@ -37,7 +37,7 @@ const Menu = () => {
     </div>
 
     {/** Right Div */}
-    <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-3 h-[780px] rounded-lg pt-2">
+    <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-3 h-[780px] md:h-[800px] rounded-lg pt-2">
         {/** Customer Info */}
         <CustomerInfo />
         <hr className="border-[#2a2a2a] border-t-2" />

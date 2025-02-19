@@ -59,7 +59,7 @@ const MenuContainer = () => {
         </div>
         <hr className="border-[#2a2a2a] border-t-2 mt-4" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 sm:px-6 md:px-8 lg:px-10 py-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-x sm:px-6 md:px-8 lg:px-10 py-4 w-full">
             {
                 selected?.items.map((item) => {
                     return (
