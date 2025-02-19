@@ -27,7 +27,7 @@ const BillInfo = () => {
         <button className="bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold">Cach</button>
         <button className="bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold">Online</button>
       </div>
-      <div className="flex items-center gap-3 px-5 mt-4">
+      <div className="flex items-center gap-3 px-5 mt-4 mb-6">
         <button className="bg-[#025cca] px-4 py-3 w-full rounded-lg text-[#f5f5f5] font-semibold text-lg">Print Reciept</button>
         <button className="bg-[#f6b100] px-4 py-3 w-full rounded-lg text-[#1f1f1f] font-semibold text-lg">Place Order</button>
       </div>
