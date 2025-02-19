@@ -4,6 +4,7 @@ import connectDB from "./src/config/database.mjs"
 import config from './src/config/config.mjs';
 import globalErrorHandler from './src/middlewares/globalErrorHandler.mjs';
 import userRoute from "./src/routes/userRoute.mjs"
+import orderRouter from "./src/routes/orderRoute.mjs"
 import cookieParser from 'cookie-parser';
 
 
@@ -17,7 +18,7 @@ connectDB();
 
 
 //Middlewares
-app.use(express.json()); //parse incoming request in json format
+app.use(express.json());
 app.use(cookieParser());
 
 //Root endpoint
@@ -26,7 +27,8 @@ app.get("/", (req, res) => {
 })
 
 //Other Endpoints
-app.use("/api/user", userRoute)
+app.use("/api/user", userRoute);
+app.use("/api/order", orderRouter);
 
 //Global error handler
 app.use(globalErrorHandler);
