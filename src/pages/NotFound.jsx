@@ -9,10 +9,10 @@ function NotFound() {
         alt="Under Construction"
         className="w-full max-w-md h-auto mb-4 animate-pulse"
       />
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <h1 className="text-xl md:text-4xl font-bold mb-4">
         Oops! Page Under Construction
       </h1>
-      <p className="text-xl md:text-2xl mb-6">
+      <p className="text-sm md:text-2xl mb-6">
         We&apos;re working hard to bring you something amazing. Please check back soon!
       </p>
       <button
