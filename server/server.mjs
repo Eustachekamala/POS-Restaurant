@@ -4,6 +4,7 @@ import connectDB from "./src/config/database.mjs"
 import config from './src/config/config.mjs';
 import globalErrorHandler from './src/middlewares/globalErrorHandler.mjs';
 import userRoute from "./src/routes/userRoute.mjs"
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config();
@@ -17,6 +18,7 @@ connectDB();
 
 //Middlewares
 app.use(express.json()); //parse incoming request in json format
+app.use(cookieParser());
 
 //Root endpoint
 app.get("/", (req, res) => {
