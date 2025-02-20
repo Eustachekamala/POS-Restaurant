@@ -4,7 +4,8 @@ import connectDB from "./src/config/database.mjs"
 import config from './src/config/config.mjs';
 import globalErrorHandler from './src/middlewares/globalErrorHandler.mjs';
 import userRoute from "./src/routes/userRoute.mjs"
-import orderRouter from "./src/routes/orderRoute.mjs"
+import orderRouter from "./src/routes/orderRoute.mjs";
+import tableRouter from "./src/routes/tableRouter.mjs";
 import cookieParser from 'cookie-parser';
 
 
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 //Other Endpoints
 app.use("/api/user", userRoute);
 app.use("/api/order", orderRouter);
+app.use("/api/table", tableRouter);
 
 //Global error handler
 app.use(globalErrorHandler);

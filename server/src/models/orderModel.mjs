@@ -1,4 +1,4 @@
-import mongoose, { now } from "mongoose";
+import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
     customerDetails : {
@@ -22,7 +22,11 @@ const orderSchema = new mongoose.Schema({
         tax : { type: Number, required: true},
         totalWithTax : { type: Number, required: true}
     },
-    items : []
+    items : [],
+    table : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : "Table"
+    }
 }, { timestamps : true});
 
 export default mongoose.model("Order", orderSchema);
