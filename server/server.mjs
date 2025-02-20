@@ -7,6 +7,7 @@ import userRoute from "./src/routes/userRoute.mjs"
 import orderRouter from "./src/routes/orderRoute.mjs";
 import tableRouter from "./src/routes/tableRouter.mjs";
 import cookieParser from 'cookie-parser';
+import cors from "cors"
 
 
 dotenv.config();
@@ -19,6 +20,10 @@ connectDB();
 
 
 //Middlewares
+app.use(cors({
+    credentials : true,
+    origin: ['http://localhost:3000']
+}))
 app.use(express.json());
 app.use(cookieParser());
 

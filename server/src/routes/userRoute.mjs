@@ -9,7 +9,7 @@ const router = express.Router();
 router.route('/register').post(register);
 router.route('/login').post(login);
 
-router.route('/status').get(isVerified,getUserData);
+router.route('/').get(isVerified,getUserData);
 
 
 export default router;
