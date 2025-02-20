@@ -4,7 +4,8 @@ import { formatDate } from "../../utils";
 
 function Greetings(){
     const [dateTime, setDateTime] = useState(new Date());
-    const customerData = useSelector(state => state.customer);
+    // const customerData = useSelector(state => state.customer);
+    const userData = useSelector(state => state.user);
     
     useEffect(() => {
         const timer = setInterval(() => setDateTime(new Date()), 1000);
@@ -20,7 +21,7 @@ function Greetings(){
             {/** Left Section */}
             <div className="w-full sm:w-auto text-center sm:text-left">
                 <h1 className="text-[#f5f5f5] text-lg sm:text-2xl font-semibold">
-                    Good Morning, {customerData.customerName}
+                    Good Morning, {userData.name || "Test User"}
                 </h1>
                 <p className="text-[#ababab] text-xs sm:text-sm">
                     Give your best services for customers
