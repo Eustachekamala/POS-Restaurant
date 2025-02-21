@@ -4,7 +4,7 @@ import { getBgColor } from '../../utils';
 import { useDispatch } from 'react-redux';
 import { updateTable } from '../../redux/slices/customerSlice';
 
-const TableCard = ({name, seats, initials, status, key}) => {
+const TableCard = ({name, seats, initials, status}) => {
   const navigate = useNavigate();
   const disptch = useDispatch();
 
@@ -17,7 +17,6 @@ const TableCard = ({name, seats, initials, status, key}) => {
   return (
     <div
     onClick={() => handleClick(name)}
-    key={key}
     className="w-full sm:w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f] hover:border-gray-400 hover:shadow-lg"
     >
         <div className="flex items-center justify-between px-1">

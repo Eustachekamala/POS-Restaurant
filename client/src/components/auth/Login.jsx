@@ -32,8 +32,8 @@ const Login = () => {
             const { data } = res;
             console.log(data)
             enqueueSnackbar(data.message, { variant: "success"});
-            const { _id, name, email, phone, role } = data.data;
-            dispatch( setUser({ _id, name, email, phone, role }));
+            const { _id, name, email, phone, role, isAuth } = data.data;
+            dispatch( setUser({ _id, name, email, phone, role, isAuth }));
             navigate("/");
         },
         onError: (error) => {
