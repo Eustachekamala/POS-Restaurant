@@ -6,6 +6,7 @@ import globalErrorHandler from './src/middlewares/globalErrorHandler.mjs';
 import userRoute from "./src/routes/userRoute.mjs"
 import orderRouter from "./src/routes/orderRoute.mjs";
 import tableRouter from "./src/routes/tableRouter.mjs";
+import paymentRouter from "./src/routes/paymentRoute.mjs"
 import cookieParser from 'cookie-parser';
 import cors from "cors"
 
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoute);
 app.use("/api/order", orderRouter);
 app.use("/api/table", tableRouter);
+app.use("/api/payment", paymentRouter);
 
 //Global error handler
 app.use(globalErrorHandler);
