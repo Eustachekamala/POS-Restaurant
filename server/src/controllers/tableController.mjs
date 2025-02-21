@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 export const addTable = async (req, res, next) => {
     try {
         // Extract table number from the request body
-        const {tableNo} = req.body;
+        const {tableNo, seats} = req.body;
         
         // Check if table number is provided
         if(!tableNo){
@@ -25,7 +25,7 @@ export const addTable = async (req, res, next) => {
         }
 
         // Create a new table with the provided table number
-        const newTable = new Table({tableNo});
+        const newTable = new Table({tableNo, seats});
         // Save the new table to the database
         await newTable.save();
 
@@ -42,7 +42,10 @@ export const addTable = async (req, res, next) => {
 export const getTables = async (req, res, next) => {
     try {
         // Retrieve all tables from the database
-        const tables = await Table.find();
+        const tables = await Table.find().populate({
+            path: "currentOrder",
+            select: "customerDetails"
+        });
         // Send a success response with the tables data
         res.status(200).json({ success: true, data: tables });
         
