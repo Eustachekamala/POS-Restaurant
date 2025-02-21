@@ -6,6 +6,7 @@ import { logout } from "../../https/api";
 import { enqueueSnackbar } from "notistack";
 import { removeUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { MdDashboard } from "react-icons/md";
 
 function Header() {
 
@@ -41,7 +42,7 @@ function Header() {
             {/** Desktop Header */}
             <header className="hidden sm:flex justify-between items-center py-4 px-4 sm:px-8 bg-[#1a1a1a]">
                 {/** LOGO */}
-                <div className="flex items-center gap-2">
+                <div onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer">
                     <img src="logo.png" className="h-8 w-8 white-logo" alt="Logo" />
                     <h1 className="text-lg font-semibold text-[#f5f5f5]">Pos-Resto</h1>
                 </div>
@@ -59,6 +60,13 @@ function Header() {
 
                 {/** LOGGED USER DETAILS */}
                 <div className="flex items-center gap-4">
+                    {
+                        userData.role === "Admin" && (
+                            <div onClick={() => navigate('/dashboard')} className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer">
+                                <MdDashboard className="text-[#f5f5f5]" />
+                            </div>
+                        )
+                    }
                     <div className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer">
                         <FaBell className="text-[#f5f5f5]" />
                     </div>
@@ -77,11 +85,18 @@ function Header() {
             <header className="sm:hidden flex flex-col justify-between items-center py-4 px-4 bg-[#1a1a1a] gap-4">
                 {/** LOGO and User Details Section */}
                 <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-2">
+                    <div onClick={() => navigate("/")}  className="flex items-center gap-2 cursor-pointer">
                         <img src="logo.png" className="h-8 w-8 white-logo" alt="Logo" />
                         <h1 className="text-lg font-semibold text-[#f5f5f5]">Pos-Resto</h1>
                     </div>
                     <div className="flex items-center gap-4">
+                        {
+                            userData.role === "Admin" && (
+                                <div onClick={() => navigate('/dashboard')} className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer">
+                                    <MdDashboard className="text-[#f5f5f5]" />
+                                </div>
+                            )
+                        }
                         <div className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer">
                             <FaBell className="text-[#f5f5f5]" />
                         </div>

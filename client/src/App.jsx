@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { Home, Auth, Orders, Tables, Menu, NotFound } from './pages';
+import { Home, Auth, Orders, Tables, Menu, NotFound, Dashboard } from './pages';
 import Header from './components/shared/Header';
 import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
@@ -38,6 +38,11 @@ function Layout() {
         <Route path="/menu" element={
           <ProtectedRoutes>
             <Menu/>
+          </ProtectedRoutes>
+        } />
+        <Route path="/dashboard" element={
+          <ProtectedRoutes>
+            <Dashboard/>
           </ProtectedRoutes>
         } />
         <Route path="*" element={<NotFound />} />

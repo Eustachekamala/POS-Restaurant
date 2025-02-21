@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
-import { getBgColor } from '../../utils';
+import { getAvatarName, getBgColor } from '../../utils';
 import { useDispatch } from 'react-redux';
 import { updateTable } from '../../redux/slices/customerSlice';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 const TableCard = ({name, seats, initials, status}) => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const TableCard = ({name, seats, initials, status}) => {
     className="w-full sm:w-[300px] bg-[#262626] rounded-lg p-4 cursor-pointer hover:bg-[#1f1f1f] hover:border-gray-400 hover:shadow-lg"
     >
         <div className="flex items-center justify-between px-1">
-            <h1 className="text-[#f5f5f5] text-xl font-semibold">{name}</h1>
+            <h1 className="text-[#f5f5f5] flex items-center gap-2 text-xl font-semibold">Table <FaLongArrowAltRight className='text-[#ababab]'/> {name}</h1>
             <p
                 className={`${
                     status === "Booked"
@@ -34,9 +35,9 @@ const TableCard = ({name, seats, initials, status}) => {
         <div className="flex items-center justify-center mt-5 mb-7">
             <h1
                 className="text-white text-xl rounded-full h-16 w-16 flex items-center justify-center"
-                style={{ backgroundColor: getBgColor() }}
+                style={{ backgroundColor: initials ?  getBgColor() : "#1f1f1f" }}
             >
-                {initials}
+                {getAvatarName(initials) || "N/A"}
             </h1>
         </div>
         <p className="text-[#abab] text-sm font-semibold">

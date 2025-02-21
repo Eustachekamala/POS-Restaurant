@@ -8,10 +8,6 @@ import paneerTikka from '../assets/images/paneer-tika.webp';
 import gulabJamun from '../assets/images/gulab-jamun.webp';
 import pooriSabji from '../assets/images/poori-sabji.webp';
 import roganJosh from '../assets/images/rogan-josh.jpg';
-import { color } from 'framer-motion';
-import { MdTableBar, MdCategory } from 'react-icons/md';
-import { BiSolidDish } from 'react-icons/bi';
-
 
 export const popularDishes = [
     {
@@ -422,7 +418,7 @@ export const menus = [
 ]
 
 export const metricsData = [
-  { title: "Revenue", value: "₹50,846.90", percentage: "12%", color: "#025cca", isIncrease: false },
+  { title: "Revenue", value: "KES 50,846.90", percentage: "12%", color: "#025cca", isIncrease: false },
   { title: "Outbound Clicks", value: "10,342", percentage: "16%", color: "#02ca3a", isIncrease: true },
   { title: "Total Customer", value: "19,720", percentage: "10%", color: "#f6b100", isIncrease: true },
   { title: "Event Count", value: "20,000", percentage: "10%", color: "#be3e3f", isIncrease: false },
@@ -438,10 +434,10 @@ export const itemsData = [
 export const orders = [
   {
     id: "101",
-    customer: "Amrit Raj",
+    customer: "Eustache Kams",
     status: "ready",
     initial: "AR",
-    dateTime: "January 18, 2025 08:32 PM",
+    dateTime: "February 18, 2025 08:32 PM",
     items: 8,
     tableNo: 3,
     total: 250.0,
@@ -451,7 +447,7 @@ export const orders = [
     customer: "John Doe",
     status: "progress",
     initial: "JD",
-    dateTime: "January 18, 2025 08:45 PM",
+    dateTime: "February 18, 2025 08:45 PM",
     items: 5,
     tableNo: 4,
     total: 180.0,
@@ -461,7 +457,7 @@ export const orders = [
     customer: "Emma Smith",
     status: "ready",
     initial: "ES",
-    dateTime: "January 18, 2025 09:00 PM",
+    dateTime: "February 18, 2025 09:00 PM",
     items: 3,
     tableNo: 5,
     total: 120.0,
@@ -471,15 +467,49 @@ export const orders = [
     customer: "Chris Brown",
     status: "progress",
     initial: "CB",
-    dateTime: "January 18, 2025 09:15 PM",
+    dateTime: "February 18, 2025 09:15 PM",
     items: 6,
     tableNo: 6,
     total: 220.0,
   },
+  {
+    id: "105",
+    customer: "Alice Green",
+    status: "ready",
+    initial: "AG",
+    dateTime: "February 19, 2025 07:20 PM",
+    items: 4,
+    tableNo: 2,
+    total: 150.0,
+  },
+  {
+    id: "106",
+    customer: "David Lee",
+    status: "progress",
+    initial: "DL",
+    dateTime: "February 19, 2025 07:45 PM",
+    items: 7,
+    tableNo: 1,
+    total: 300.0,
+  },
+  {
+    id: "107",
+    customer: "Sophia White",
+    status: "ready",
+    initial: "SW",
+    dateTime: "February 19, 2025 08:10 PM",
+    items: 2,
+    tableNo: 5,
+    total: 80.0,
+  },
+  {
+    id: "108",
+    customer: "James Black",
+    status: "progress",
+    initial: "JB",
+    dateTime: "February 19, 2025 08:30 PM",
+    items: 5,
+    tableNo: 7,
+    total: 190.0,
+  }
 ];
-// const buttons = [
-//   { label: "Add Table", icon: <MdTableBar />, action: "table" },
-//   { label: "Add Category", icon: <MdCategory />, action: "category" },
-//   { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
-// ];
-// const tabs = ["Metrics", "Orders", "Payments"];

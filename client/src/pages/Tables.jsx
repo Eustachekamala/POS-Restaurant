@@ -2,10 +2,25 @@ import ButtonNav from "../components/shared/ButtonNav";
 import BackButton from "../components/shared/BackButton";
 import { useState } from "react";
 import TableCard from "../components/tables/TableCard";
-import { tables } from "../constants";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { getTables } from "../https/api";
+import { enqueueSnackbar } from "notistack";
 
 function Tables(){
     const [status, setStatus] = useState("all")
+
+    const { data: resData, isError } = useQuery({
+            queryKey: ["tables"],
+            queryFn: async () => {
+                return await getTables();
+            },
+            placeholderData: keepPreviousData
+    })
+
+    if(isError){
+        enqueueSnackbar("Something went wrong!", { variant: "error"});
+    }
+    
     return(
         <section className="bg-[#1f1f1f] md:h-[calc(100vh-5rem)] overflow-hidden">
             <div className="flex sm:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-4 mt-2 gap-4 sm:gap-0">
@@ -34,10 +49,10 @@ function Tables(){
             </div>
             <div className="flex flex-wrap gap-4 sm:gap-6 p-4 sm:p-6 md:p-8 lg:p-10 overflow-auto scrollbar-hide h-[calc(100vh-10rem)] sm:h-[700px]">
                 {
-                    tables.map((table) =>{
+                    resData?.data.data.map((table, index) =>{
                         return(
-                            <TableCard key={table.id} id={table.id} name={table.name} 
-                            status={table.status} initials={table.initial} seats={table.seats}/>
+                            <TableCard key={index}  id={table._id} name={table.tableNo} 
+                            status={table.status} initials={table?.currentOrder?.customerDetails.name} seats={table.seats}/>
                         )
                     })
                 }
